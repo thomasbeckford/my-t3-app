@@ -7,7 +7,7 @@ import { api } from "../utils/api";
 const Home: NextPage = () => {
 
 const user = useUser()
-const { data, isLoading: postsLoading } = api.posts.getAll.useQuery();
+const { data,  } = api.posts.getAll.useQuery();
 
 
 console.log(data)
@@ -25,9 +25,7 @@ console.log(data)
       {!!user.isSignedIn && (<SignOutButton />)}
 
       {data?.map((post) => (
-        <div key={post.id}>
-          <h1>{post.content}</h1> 
-          </div>
+        <div key={post.id}>{post.content}</div>
       ))}
 
       <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
