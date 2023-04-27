@@ -7,9 +7,8 @@ import { api } from "../utils/api";
 const Home: NextPage = () => {
 
 const user = useUser()
+const { data, isLoading: postsLoading } = api.posts.getAll.useQuery();
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const { data } = api.posts.getAll.useQuery()
 
 console.log(data)
 
@@ -24,6 +23,12 @@ console.log(data)
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
       {!user.isSignedIn && (<SignInButton />)}
       {!!user.isSignedIn && (<SignOutButton />)}
+
+      {data?.map((post) => (
+        <div key={post.id}>
+          <h1>{post.content}</h1> 
+          </div>
+      ))}
 
       <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
 
