@@ -1,0 +1,5 @@
+{
+  // prettier name prettier.config.ccjs
+  "prettier.configPath": "./prettier.config.cjs"
+    
+}
