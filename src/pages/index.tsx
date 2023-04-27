@@ -1,13 +1,19 @@
 import { SignIn, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
+import { api } from "../utils/api";
 
 
 const Home: NextPage = () => {
 
 const user = useUser()
 
-console.log(user)
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const { data } = api.posts.getAll.useQuery()
+
+console.log(data)
+
+
   return (
     <>
       <Head>
